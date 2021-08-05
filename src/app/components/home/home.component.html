@@ -1,0 +1,59 @@
+<div>
+<div>
+  <div class="header">
+    <p>logged in user {{this.logginuser}}</p>
+    <a routerLink="/login">signout</a>
+  </div>
+ </div>
+  <div class="row">
+    <div class="column side">
+      <h2></h2>
+     </div>
+  <div class="column middle">
+    <div>
+      <label>TITLE
+      <input type="text" name="Title" #title/>
+      </label>
+      <label></label>
+    </div>
+    <div>
+      <label>DESCRIPTION
+      <textarea name="desc" #description></textarea>
+      </label>
+    </div>
+    <div id = "container">
+      <button (click)="saveToDoList(title.value,description.value)" id="button1">save</button>
+      <button (click)="removeFromToDo($event)" id="button2">remove</button>
+    </div>
+    <div>
+    <ag-grid-angular
+      style="width: 500px; height: 500px;"
+      class="ag-theme-balham"
+      [rowData]="rowData"
+      [getRowNodeId]="getRowNodeId"
+      [defaultColDef]="defaultColDef"
+      (gridReady)="onGridReady($event)"
+      (cellClicked)="onclickRow($event)"
+      rowSelection="single"
+      editType = 'fullRow'
+      (cellValueChanged)="onCellValueChanged($event)"
+      (rowValueChanged)="onRowValueChanged($event)"
+      [columnDefs]="columnDefs">
+    </ag-grid-angular>
+    </div>
+    <!--<div>
+      <button (click)="getList()">get</button>
+    </div>-->
+  </div>
+    <div class="column side">
+      <h2></h2>
+
+    </div>
+  </div>
+
+<!--  <ey-todo-login-component [logginuser]="hello"></ey-todo-login-component>-->
+</div>
+
+<router-outlet></router-outlet>
+
+
